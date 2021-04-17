@@ -1,6 +1,6 @@
 import data from './pokedex.json'
 
-import { POKEDEX_LIST, POKEMON_DETAIL, POKEMON_CAPTURE, POKEMON_RELEASE } from "./actions";
+import { POKEDEX_LIST, POKEMON_DETAIL, POKEMON_CAPTURE, POKEMON_RELEASE, POKEMON_ADDNEW } from "./actions";
 
 const initialState = {
     allPokemon: [],
@@ -39,6 +39,16 @@ const pokedexReducer = (prevState = initialState, action) => {
                 ...prevState,
                 allPokemon: prevState.allPokemon.map( el => el.id === action.payload.id ? ({ ...el, captured: false}): ({...el}) )
             }
+
+        case POKEMON_ADDNEW:
+            const newId = prevState.allPokemon.length + 1
+            prevState.allPokemon.push({
+                ...action.payload,
+                id: newId,
+                captured: false,
+            })
+            return prevState
+            
         default:
             return prevState
     }

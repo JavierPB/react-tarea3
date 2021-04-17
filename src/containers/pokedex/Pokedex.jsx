@@ -15,9 +15,16 @@ const Pokedex = () => {
     if(pokemons.length === 0) dispatch(pokemonGetAll())
   }, [pokemons, dispatch])
 
-  return pokemons.length > 0 ? (
+  return (
     <div>
-      <h1 className="mb-2">Pokedex</h1>
+      <h1 className="mb-2">
+        Pokedex
+        <Link to={routes.POKEMON_ADD} className="btn btn-success ml-3">
+          <i className="fas fa-plus"></i>&nbsp;
+          AGREGAR UNO NUEVO
+        </Link>
+      </h1>
+      {pokemons.length > 0 ? (
       <div className="card card-primary">
         <div className="card-body p-0">
           <div className="list-group">
@@ -38,17 +45,11 @@ const Pokedex = () => {
               </Link>
             ))}
           </div>
-          <div className="table-responsive">
-            <table className="table m-0">
-              <tbody>
-                
-              </tbody>
-            </table>
-          </div>
         </div>
       </div>
+    ): (<div>Loading...</div>)}
     </div>
-  ): (<div>Loading...</div>)
+  )
 }
 
 export default Pokedex

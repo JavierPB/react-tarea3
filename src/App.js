@@ -7,6 +7,7 @@ import Sidebar from './components/sidebar/Sidebar'
 import Home from './containers/home/Home'
 import Pokedex from './containers/pokedex/Pokedex'
 import PokemonDetail from './containers/pokemon-detail/PokemonDetail'
+import PokemonAdd from './containers/pokemon-add/PokemonAdd'
 import routes from './routes'
 import store from './store'
 
@@ -29,6 +30,9 @@ function App() {
                 </Route>
                 <Route path={routes.POKEMON} exact>
                   <Pokedex />
+                </Route>
+                <Route path={routes.POKEMON_ADD}>
+                  <PokemonAdd />
                 </Route>
                 <Route path={routes.POKEMON_DETAIL}>
                   <PokemonDetail />
